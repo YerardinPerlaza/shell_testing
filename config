@@ -4,8 +4,8 @@ TESTDIR="."
 R=$RANDOM
 OUTPUTFILE="checker_output_$R"
 ERROROUTPUTFILE="checker_error_output_$R"
-SHELL="$(sudo find /home -type d | grep --regexp="/simple_shell$")"
-#SHELL="/bin/sh"
+SHELL="/home/vagrant/holberton/projects/teams/simple_shell/hsh"
+#SHELL=\"find "$(sudo find /home -type d | grep --regexp="/simple_shell$")" -type f -executable | grep --invert-match ".git"\"
 SLEEP=`which sleep`
 SLEEPSECONDS=1
 LTRACE=`which ltrace`
