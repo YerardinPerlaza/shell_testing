@@ -2,9 +2,10 @@
 #
 # Empty the PATH and check if /bin/ls still works
 
-command="0x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00"
+command="noexecutable"
 tmp_file="checker_tmp_file_$RANDOM"
-EXPECT="1: ${command}: File name too long"
+EXPECT="1: ${command}: Permission denied"
+
 
 # clean up
 stop_shell
@@ -13,6 +14,9 @@ rm -f $tmp_file
 # create a pseudo random file
 touch $tmp_file
 # send comman
+sudo touch "/usr/local/bin/${command}"
+sudo chmod -x "/usr/local/bin/${command}"
+sudo chmod +r "/usr/local/bin/${command}"
 
 $ECHO "$command" | $SHELL 2> /dev/stdout > /dev/null | $CUT --fields=2- --delimiter=":" | $CUT --characters=2- > $OUTPUTFILE 2> $ERROROUTPUTFILE &
 
@@ -24,9 +28,9 @@ $SLEEP $SLEEPSECONDS
 # check the result
 nmatch=`$CAT $OUTPUTFILE`
 if [ "$nmatch" = "$EXPECT" ]; then
-    print_ok
+	print_ok
 else
-    print_ko
+	print_ko
 	$ECHO -e "    >[\033[31mYour message error\033[37m]";
 	$ECHO -e "\t$(cat $OUTPUTFILE)";
 	$ECHO -e "    >[\033[32mExpect message error\033[37m]";
@@ -34,4 +38,4 @@ else
 fi
 # clean up
 stop_shell
-$RM -f $tmp_file
+#$RM -f $tmp_file

@@ -4,7 +4,7 @@
 
 command="0x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x00007ffccef0a7600x0"
 tmp_file="checker_tmp_file_$RANDOM"
-EXPECT="not found"
+EXPECT="1: ${command}: not found"
 
 
 # clean up
@@ -15,7 +15,7 @@ rm -f $tmp_file
 touch $tmp_file
 # send comman
 
-$ECHO "$command" | $SHELL 2> /dev/stdout > /dev/null | $CUT --fields=4- --delimiter=":" | $CUT --characters=2- > $OUTPUTFILE 2> $ERROROUTPUTFILE &
+$ECHO "$command" | $SHELL 2> /dev/stdout > /dev/null | $CUT --fields=2- --delimiter=":" | $CUT --characters=2- > $OUTPUTFILE 2> $ERROROUTPUTFILE &
 
 
 
