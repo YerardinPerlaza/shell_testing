@@ -7,8 +7,8 @@ Fork this repo and add more checks to help you and the rest of the class build t
 
 ## Configuration
 
-You must have a compilation in the root of your "simple_shell" folder
-it does not matter the location of your simple shell folder
+You must have a compilation in the root of your "simple_shell" folder. 
+It does not matter the location of your simple shell folder
 
 ## Run
 
