@@ -2,7 +2,7 @@
 #
 # Empty the PATH and check if /bin/ls still works
 
-command="noexecutable"
+command="executablenoread"
 tmp_file="checker_tmp_file_$RANDOM"
 EXPECT="0: Can't open /usr/local/bin/${command}"
 
@@ -18,7 +18,7 @@ sudo touch "/usr/local/bin/${command}"
 sudo chmod +x "/usr/local/bin/${command}"
 sudo chmod -r "/usr/local/bin/${command}"
 
-$ECHO "$command" | $SHELL 2> $OUTPUTFILE > $ERROROUTPUTFILE &
+$ECHO "$command" | $SHELL 2> /dev/stdout > /dev/null | $CUT --fields=2- --delimiter=":" | $CUT --characters=2- > $OUTPUTFILE 2> $ERROROUTPUTFILE &
 
 # wait a little bit
 $SLEEP $SLEEPSECONDS
