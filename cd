@@ -1,0 +1,7 @@
+#!/bin/bash
+command="cd -"
+
+echo "my_shell"
+echo "$command" | ./simple_shell
+echo "Real_shell"
+echo "$command" | /bin/sh
