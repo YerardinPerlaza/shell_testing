@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# checking in with your history
+
+command="exit 257"
+
+# clean up
+stop_shell
+
+# create a pseudo random file
+touch $tmp_file
+
+# send commands
+cat $HOME/.simple_shell_history | grep "exit 257" > "$OUTPUTFILE"
+echo "exit 257" > "$EXPECTED"
+
+# wait a little bit
+"$SLEEP" "$SLEEPSECONDS"
+
+# check the result
+check_diff
+
+# print error
+print_error
+
+# clean up
+stop_shell
