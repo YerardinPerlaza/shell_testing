@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#the input for user is echo...
+echo $?
+
+#the result should be 0
