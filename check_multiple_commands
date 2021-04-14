@@ -1,0 +1,10 @@
+#!/bin/bash
+command="pwd ls"
+
+#case: multiple commands
+#output: execution of first command
+
+echo "my_shell"
+echo "$command" | ./simple_shell
+echo "Real_shell"
+echo "$command" | /bin/sh
