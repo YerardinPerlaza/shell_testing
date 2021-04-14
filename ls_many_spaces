@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#The simple shell should work with many blank spaces
+echo "ls          -la" | ./hsh
+#Output should be like a normal ls -la command.

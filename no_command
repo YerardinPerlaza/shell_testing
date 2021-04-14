@@ -1,0 +1,7 @@
+!#bin/bash
+
+#just prest enter
+
+echo "" | ./hsh
+
+#the result should be "$ " or your respective prompt symbol
