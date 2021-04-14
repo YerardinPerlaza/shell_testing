@@ -3,3 +3,6 @@ edit this file to be able to add yourself as an author again
 jj131204.
 jb75
 Rode1o
+Juan David Tuta <2753@holbertonscholl.com>
+Luis Pacheco <2645@holbertonschool.com>
+Carolina Capote <2621@holbertonschool.com>
