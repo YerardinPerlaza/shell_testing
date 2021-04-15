@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# print env with junk after env
+# test env with arguments
 
 command="env echo test whit_arguments"
 
