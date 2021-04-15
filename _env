@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# parse 'env' command
+# parse 'env' this command
 command="env"
 tmp_file="checker_tmp_file_$RANDOM"
 
