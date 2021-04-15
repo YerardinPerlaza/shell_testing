@@ -56,15 +56,15 @@ commands=(
 
 for ((i=0; i < ${#commands[@]}; i++))
 do 
-	echo "[$i]  Command: ${blue}\"${commands[$i]}\" | ../test/run${reset}"
+	echo "[$i]  Command: ${blue}\"${commands[$i]}\" | ./hsh${reset}"
 	echo
 	echo "->> Esperado <<-"
-	echo ${commands[$i]} | /bin/../bin/sh 2>&1
+	echo ${commands[$i]} | /bin/sh 2>&1
 	salida1=$?
 
 	echo
 	echo "->> Obtenido <<-"
-	echo ${commands[$i]} | ../test/run 2>&1
+	echo ${commands[$i]} | ./hsh 2>&1
 	salida2=$?
 
 	print_exit_code $salida1 $salida2
@@ -93,16 +93,72 @@ done
 	#------------------------------------------------
 
 
+#----> borra el PATH y crea la variable PATH1 <----#
+	echo "set PATH void and set PATH1 with the PATH of the machine"
+	OLDPATH="$PATH"
+	PATH=""
+	PATH1="$PATH"
+	echo "PATH=" $PATH
+	echo "[$i]  Command: ${blue}ls  | ./hsh${reset}"
+	echo
+	echo
+	echo "->> Esperado <<-"
+	echo "ls" | /bin/sh 2>&1
+	salida1=$?
+
+	echo
+	echo "->> Obtenido <<-"
+	echo "ls" | ./hsh 2>&1
+	salida2=$?
+
+	print_exit_code $salida1 $salida2
+
+	PATH="$OLDPATH"
+	i=$(($i + 1))
+	#------------------------------------------------
+
+#----> ejecuta ls con el PATH vacio <----#
+	OLDPATH="$PATH"
+	PATH=""
+	echo "PATH=" $PATH
+	echo "[$i]  Command: ${blue}pwd  | ./hsh${reset}"
+	echo
+	echo "->> Esperado <<-"
+	echo "pwd" | /bin/sh 2>&1
+	salida1=$?
+
+	echo
+	echo "->> Obtenido <<-"
+	echo "pwd" | ./hsh 2>&1
+	salida2=$?
+
+	print_exit_code $salida1 $salida2
+
+	PATH="$OLDPATH"
+	i=$(($i + 1))
+	#------------------------------------------------
 
 
+#----> borra el PATH y crea la variable PATH1 <----#
+	echo "set PATH void and set PATH1 with the PATH of the machine"
+	OLDPATH="$PATH"
+	PATH=""
+	PATH1="$PATH"
+	echo "PATH=" $PATH
+	echo "[$i]  Command: ${blue}pwd  | ./hsh${reset}"
+	echo
+	echo
+	echo "->> Esperado <<-"
+	echo "pwd" | /bin/sh 2>&1
+	salida1=$?
 
+	echo
+	echo "->> Obtenido <<-"
+	echo "pwd" | ./hsh 2>&1
+	salida2=$?
 
+	print_exit_code $salida1 $salida2
 
-
-
-
-
-
-
-
-
+	PATH="$OLDPATH"
+	i=$(($i + 1))
+	#------------------------------------------------
