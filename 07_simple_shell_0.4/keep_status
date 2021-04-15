@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# test the exit out prove with the limit number
+tmp_file="checker_tmp_file_$RANDOM"
+EXPECT=3
+command="cisfun
+exit"
+
+# clean up
+stop_shell
+rm -f $tmp_file
+
+# create a pseudo random file
+touch $tmp_file
+# run command
+echo "$command" | $SHELL
+status_hsh=$?
+
+echo "$command" | sh
+status_sh=$?
+# wait a little bit
+$SLEEP $SLEEPSECONDS
+
+# check the result
+if [ $status_hsh -eq $status_sh ]; then
+	print_ok
+else
+	print_ko
+	$ECHO -e "    >[\033[31mYour status exit\033[37m]";
+	$ECHO -e "\t${status_hsh}";
+	$ECHO -e "    >[\033[32mExpect status exit\033[37m]";
+	$ECHO -e "\t${status_sh}";
+fi
+
+# clean up
+stop_shell
+$RM -f $tmp_file
+
+
