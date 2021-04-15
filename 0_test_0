@@ -6,7 +6,22 @@ green=`tput setaf 2`
 blue=`tput setaf 4`
 reset=`tput sgr0`
 
-echo "file: 0--test_0"
+
+print_exit_code()
+{
+  	echo
+	if [ "$salida1" -ne "$salida2" ]
+	then
+		echo "${red}->>>>>>>>>> Error <<<<<<<<<<-"
+		echo "Esperado:" $salida1 "<> Obtenido:"  $salida2 "${reset}"
+	else
+		echo "${green}Esperado: $salida1 <> Obtenido:  $salida2 ${reset}"
+	fi
+	echo -----------------------------------------------
+	echo
+}
+
+echo "file: 0_test_0"
 echo
 
 commands=(
@@ -28,11 +43,15 @@ commands=(
 	"/bin/ls /bin/ls /bin/ls"
 	"ls ls ls ls ls ls"
 	"ls -la ls -la ls -la"
+	"cat test_ls_2"
+	"env wegrsrtydfu"
+	"env hola=mundo"
 	"env"
 	"env 0"
 	"exit"
 	"exit 0"
 	"exit 98"
+	"exit asd"
 	)
 
 for ((i=0; i < ${#commands[@]}; i++))
@@ -41,27 +60,37 @@ do
 	echo
 	echo "->> Esperado <<-"
 	echo ${commands[$i]} | /bin/../bin/sh 2>&1
-
 	salida1=$?
+
 	echo
 	echo "->> Obtenido <<-"
 	echo ${commands[$i]} | ../test/run 2>&1
 	salida2=$?
 
-	echo
-	if [ "$salida1" -ne "$salida2" ]
-	then
-		echo "${red}->>>>>>>>>> Error <<<<<<<<<<-"
-		echo "Esperado:" $salida1 "<> Obtenido:"  $salida2 "${reset}"
-	else
-		echo "${green}Esperado: $salida1 <> Obtenido:  $salida2 ${reset}"
-	fi
-	echo -------------------------------------------
-	echo
+	print_exit_code $salida1 $salida2
 
 done
 
+#----> ejecuta ls con el PATH vacio <----#
+	OLDPATH="$PATH"
+	PATH=""
+	echo "PATH=" $PATH
+	echo "[$i]  Command: ${blue}ls  | ./hsh${reset}"
+	echo
+	echo "->> Esperado <<-"
+	echo "ls" | /bin/sh 2>&1
+	salida1=$?
 
+	echo
+	echo "->> Obtenido <<-"
+	echo "ls" | ./hsh 2>&1
+	salida2=$?
+
+	print_exit_code $salida1 $salida2
+
+	PATH="$OLDPATH"
+	i=$(($i + 1))
+	#------------------------------------------------
 
 
 
