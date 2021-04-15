@@ -10,7 +10,7 @@ Fork this repo and add more checks to help you and the rest of the class build t
 ![Ubuntu](https://img.shields.io/badge/-Ubuntu-E95420?&style=flat-square&logo=Ubuntu&labelColor=282828)
 ![Git](https://img.shields.io/badge/-Git-F05032?logo=git&style=flat-square&labelColor=282828)
 ![GNU_Bash](https://img.shields.io/badge/-GNU_Bash-4EAA25?logo=GNU-Bash&style=flat-square&labelColor=282828)
-![emacs](https://img.shields.io/badge/-emacs-green)
+![Vim](https://img.shields.io/badge/≡-Vim-019733?logo=Vim&style=flat-square&logoColor=019733&labelColor=282828)
 ![Vagrant](https://img.shields.io/badge/-Vagrant-1563FF?logo=Vagrant&style=flat-square&logoColor=1563FF&labelColor=282828)
 ![C](https://img.shields.io/badge/-C-A8B9CC?logo=C&style=flat-square&labelColor=282828)
 ![GNU_Emacs](https://img.shields.io/badge/-GNU_Emacs-7F5AB6?logo=GNU-Emacs&style=flat-square&labelColor=282828)
